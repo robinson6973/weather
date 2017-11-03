@@ -1,4 +1,4 @@
-//takes the inputted postvode
+//takes the inputted postcode from the php form and wacks it in the console
 var form = document.getElementById("postCodeForm");
 form.onsubmit = function(event){
 	event.preventDefault();
@@ -7,6 +7,7 @@ form.onsubmit = function(event){
 	locationRequest(postCodeInput.value);
 }
 
+//This function takes the postcode, combines it with the API and then gets a JSON file back
 function locationRequest(postCode){
 	//Makes the request to get the data from Geocoder
 	var xhrLoc = new XMLHttpRequest();
@@ -21,12 +22,18 @@ function locationRequest(postCode){
 	xhrLoc.send()
 }
 
+//This function takes the JSON from the previous function. It then gets out a lattitude or longitude.
 function getLatLng(results){
+	//Output the results
 	console.log(results);
+	//Scroll down the array in the JSON. I ignore everything except the two lat long variables
 	var location = results["results"][0]["geometry"]["location"]
+	//Finds the lattitude value
 	var lat = location["lat"]
+	//Finds the longitude value
 	var lng = location["lng"]
 	weatherRequest(lat, lng)
+	//Output the lat, long into the console for debugging 2
 	console.log(lat)
 	console.log(lng)
 }
@@ -43,3 +50,14 @@ function weatherRequest(lat, lng){
 	xhrWeather.send
 }
 
+//This function takes the JSON from the previous function. It then gets out a lattitude or longitude.
+function getLatLng(results){
+	console.log(results);
+	var location = results["results"][0]["geometry"]["location"]
+	var lat = location["lat"]
+	var lng = location["lng"]
+	weatherRequest(lat, lng)
+	console.log(lat)
+	console.log(lng)
+}
+ 
