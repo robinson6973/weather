@@ -1,5 +1,4 @@
 <?php
-echo "sucess";
 
 ?>
 
@@ -13,8 +12,10 @@ echo "sucess";
  	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet"/>
  	<link rel="icon" href="">
 </head>
+
 <body>
 	<h1>Weather App</h1>
+
 	<!--primary button-->
 	<button class= "action">Start</button>
 	<!--Secondary Button-->
@@ -23,13 +24,14 @@ echo "sucess";
 	<button class="create">Create</button>
 	<!-- share something -->
 	<button class="share">Share</button>
+	<!-- This is the form that is used to submit the postcode into the JS-->
 	<form action="C:/Users/robin/Desktop/website/GET.php " id="postCodeForm">
+		<!-- Cheeky bit of text for the input -->
 		Post Code:
 		<input type="text" name="postCode" id="postCode">
 		<input type="submit" name="submit"/>
 	</form>
 	<script src="GET.js"></script>
-	
 </body>
 
 </html>
