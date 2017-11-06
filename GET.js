@@ -27,11 +27,11 @@ function getLatLng(results){
 	//Output the results
 	console.log(results);
 	//Scroll down the array in the JSON. I ignore everything except the two lat long variables
-	var location = results["results"][0]["geometry"]["location"]
-	//Finds the lattitude value
-	var lat = location["lat"]
-	//Finds the longitude value
-	var lng = location["lng"]
+	var location = results["results"][0]["geometry"]["location"],
+		//Finds the lattitude value
+		lat = location["lat"],
+		//Finds the longitude value
+		lng = location["lng"]
 	weatherRequest(lat, lng)
 	//Output the lat, long into the console for debugging 2
 	console.log(lat)
@@ -45,42 +45,37 @@ function weatherRequest(lat, lng){
 	xhrWeather.open("GET", "https://api.darksky.net/forecast/f46a65f5e5124d53891965f3209cbc20/" + lat + "," + lng)
 	xhrWeather.onload = function(){
 		var weatherData = JSON.parse(xhrWeather.response);
+		getWeatherCurrent(weatherData);
 		console.log("weatherData being aquired");
 	}
-	xhrWeather.send
-}
+	xhrWeather.send()
 
-// THis is for git testing
+}
 
 //CURRENT TIME!!!!!!!!!!!!!
 //This function takes the JSON from the previous function. It then gets out a lattitude or longitude.
-function getWeatherCurrent(results){
-	console.log(results);
-	var weather = currently["currently"][0]
-	var time = currently["time"]
-	var summary = currently["summary"]
-	var precipIntensity = currently["precipIntensity"]
-	var apparentTemperature = currently["apparentTemperature"]
-	var windSpeed = currently["wi"]
+function getWeatherCurrent(currently){
+	//
+	console.log(currently);
+	var weather = currently["currently"][0],
+		time = currently["time"],
+		summary = currently["summary"],
+		precipIntensity = currently["precipIntensity"]
+		apparentTemperature = currently["apparentTemperature"],
+		windSpeed = currently["windSpeed"]
 	console.log(time)
 	console.log(summary)
 	console.log(precipIntensity)
 	console.log(apparentTemperature)
 	console.log(windSpeed)
 }
- 
-/*
 
-*/
-//This function will obtain thev weather results from the JSON format
-function getWeather(results){
-	//Output the results
-	console.log(results);
-	//THIS LINE WILL NEED TO BE COMPLETELY CHANGED TO THE SPECIFIC DETAILS FROM THE WEATHER DATA
-	var location = results["results"][0]["geometry"]["location"]
-	//ALSO CHANGE THIS 
-	var lat = location["lat"]
-	//ALSO CHANGE THIS 
-	var lng = location["lng"]
-	weatherRequest(lat, lng)
+//This bit finds the time 
+var time = function () {
+	return Date.now()/1000
+}
+
+//This bit gets minutely weather
+function getWeather(){
+
 }
