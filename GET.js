@@ -50,6 +50,8 @@ function weatherRequest(lat, lng){
 	xhrWeather.send
 }
 
+// THis is for git testing
+
 //CURRENT TIME!!!!!!!!!!!!!
 //This function takes the JSON from the previous function. It then gets out a lattitude or longitude.
 function getWeatherCurrent(results){
@@ -67,6 +69,9 @@ function getWeatherCurrent(results){
 	console.log(windSpeed)
 }
  
+/*
+
+*/
 //This function will obtain thev weather results from the JSON format
 function getWeather(results){
 	//Output the results
