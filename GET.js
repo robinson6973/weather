@@ -37,12 +37,15 @@ function getLatLng(results){
 	console.log(lat)
 	console.log(lng)
 }
+// THIS ENTIRE SECTION NEEDS TO BE PHP!
+
 
 function weatherRequest(lat, lng){
-	//Makes the request to get the data from Dark Skies
+	//Makes the request to get the data from GET.php file
+	//The GET file is there to 
 	var xhrWeather = new XMLHttpRequest();
 	//Makes the API request
-	xhrWeather.open("GET", "https://api.darksky.net/forecast/f46a65f5e5124d53891965f3209cbc20/" + lat + "," + lng)
+	xhrWeather.open("GET", "GET.php/?lat=" + lat + "&lng=" + lng);
 	xhrWeather.onload = function(){
 		var weatherData = JSON.parse(xhrWeather.response);
 		getWeatherCurrent(weatherData);
@@ -70,7 +73,7 @@ function getWeatherCurrent(currently){
 	console.log(windSpeed)
 }
 
-//This bit finds the time 
+//This bit finds the time at current...
 var time = function () {
 	return Date.now()/1000
 }
