@@ -8,5 +8,8 @@ body {
 }
 
 h1{
-	color: green font-size: 40px;
+	color: green; font-size: 40px;
+}
+button{
+	color:red;
 }

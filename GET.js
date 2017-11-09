@@ -37,7 +37,7 @@ function getLatLng(results){
 	console.log(lat)
 	console.log(lng)
 }
-// THIS ENTIRE SECTION NEEDS TO BE PHP!
+
 
 
 function weatherRequest(lat, lng){
@@ -55,8 +55,16 @@ function weatherRequest(lat, lng){
 
 }
 
+//This bit finds the time at current...
+var time = function () {
+	return Date.now()/1000
+}
+
 //CURRENT TIME!!!!!!!!!!!!!
 //This function takes the JSON from the previous function. It then gets out a lattitude or longitude.
+//	function getcurrent weather
+//	print current weather
+//		
 function getWeatherCurrent(currently){
 	//
 	console.log(currently);
@@ -73,12 +81,34 @@ function getWeatherCurrent(currently){
 	console.log(windSpeed)
 }
 
-//This bit finds the time at current...
-var time = function () {
-	return Date.now()/1000
+//This bit gets minutely weather
+function getWeather(minutely){
+	console.log(currently);
+	var weather = currently["currently"][0],
+		time = currently["time"],
+		summary = currently["summary"],
+		precipIntensity = currently["precipIntensity"]
+		apparentTemperature = currently["apparentTemperature"],
+		windSpeed = currently["windSpeed"]
+	console.log(time)
+	console.log(summary)
+	console.log(precipIntensity)
+	console.log(apparentTemperature)
+	console.log(windSpeed)
 }
 
-//This bit gets minutely weather
-function getWeather(){
-
+//This bit gets hourly weather
+function getWeather(hourly){
+	console.log(currently);
+	var weather = currently["currently"][0],
+		time = currently["time"],
+		summary = currently["summary"],
+		precipIntensity = currently["precipIntensity"]
+		apparentTemperature = currently["apparentTemperature"],
+		windSpeed = currently["windSpeed"]
+	console.log(time)
+	console.log(summary)
+	console.log(precipIntensity)
+	console.log(apparentTemperature)
+	console.log(windSpeed)
 }
