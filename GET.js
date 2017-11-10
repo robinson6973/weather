@@ -44,12 +44,15 @@ function weatherRequest(lat, lng){
 	//Makes the request to get the data from GET.php file
 	//The GET file is there to 
 	var xhrWeather = new XMLHttpRequest();
-	//Makes the API request
+	//Gets the data from the GET.php document
 	xhrWeather.open("GET", "GET.php/?lat=" + lat + "&lng=" + lng);
+	//WHen the weather data loads parse it from JSON into arrays
 	xhrWeather.onload = function(){
+		//	
 		var weatherData = JSON.parse(xhrWeather.response);
 		getWeatherCurrent(weatherData);
 		console.log("weatherData being aquired");
+		console.log(weatherData)
 	}
 	xhrWeather.send()
 
@@ -68,7 +71,7 @@ var time = function () {
 function getWeatherCurrent(currently){
 	//
 	console.log(currently);
-	var weather = currently["currently"][0],
+	var weather = currently["currently"],
 		time = currently["time"],
 		summary = currently["summary"],
 		precipIntensity = currently["precipIntensity"]
