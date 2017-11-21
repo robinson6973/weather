@@ -23,6 +23,8 @@ function locationRequest(postCode){
 }
 
 //This function takes the JSON from the previous function. It then gets out a lattitude or longitude.
+//	lat
+//	lng
 function getLatLng(results){
 	//Output the results
 	console.log(results);
@@ -39,7 +41,7 @@ function getLatLng(results){
 }
 
 
-
+//This function fetches the data from the server via a PHP function
 function weatherRequest(lat, lng){
 	//Makes the request to get the data from GET.php file
 	//The GET file is there to 
@@ -55,23 +57,24 @@ function weatherRequest(lat, lng){
 		console.log(weatherData)
 	}
 	xhrWeather.send()
-
 }
 
 //This bit finds the time at current...
+//The variables that I will be working with later down in the program will be
+//	timeMinutely 
+//	timeHourly
+//	timeDaily
 var time = function () {
 	return Date.now()/1000
+	var timeMinutely = time,
+		timeHourly = time+3600,
+		timeDaily = time+86400	
 }
 
-//CURRENT TIME!!!!!!!!!!!!!
-//This function takes the JSON from the previous function. It then gets out a lattitude or longitude.
-//	function getcurrent weather
-//	print current weather
-//		
-function getWeatherCurrent(currently){
-	//
-	console.log(currently);
-	var weather = currently["currently"],
+//This function parses the JSON and	
+function getWeatherCurrent(weatherData){
+	console.log(weatherData)
+	var currently = weatherData["currently"],
 		time = currently["time"],
 		summary = currently["summary"],
 		precipIntensity = currently["precipIntensity"]
@@ -84,10 +87,10 @@ function getWeatherCurrent(currently){
 	console.log(windSpeed)
 }
 
-//This bit gets minutely weather
-function getWeather(minutely){
-	console.log(currently);
-	var weather = currently["currently"][0],
+//Same as above but for every minute in the Data set.
+function getWeatherMinutely(weatherData){
+	console.log(weatherData)
+	var currently = weatherData["currently"],
 		time = currently["time"],
 		summary = currently["summary"],
 		precipIntensity = currently["precipIntensity"]
@@ -100,15 +103,31 @@ function getWeather(minutely){
 	console.log(windSpeed)
 }
 
-//This bit gets hourly weather
-function getWeather(hourly){
-	console.log(currently);
-	var weather = currently["currently"][0],
-		time = currently["time"],
-		summary = currently["summary"],
-		precipIntensity = currently["precipIntensity"]
-		apparentTemperature = currently["apparentTemperature"],
-		windSpeed = currently["windSpeed"]
+//Same as above but for every hour in the Data set.
+function getWeatherHourly(weatherData){
+	console.log(weatherData)
+	var hourlyCurrently = weatherData["currently"],
+		hourlyTime = currently["time"],
+		hourlySummary = currently["summary"],
+		hourlyPrecipIntensity = currently["precipIntensity"]
+		hourlyApparentTemperature = currently["apparentTemperature"],
+		hourlyWindSpeed = currently["windSpeed"]
+	console.log(time)
+	console.log(summary)
+	console.log(precipIntensity)
+	console.log(apparentTemperature)
+	console.log(windSpeed)
+}
+
+//Same as above but for every day in the data set
+function getWeatherDaily(weatherData){
+	console.log(weatherData)
+	var dailyCurrently = weatherData["currently"],
+		dailyTime = currently["time"],
+		dailySummary = currently["summary"],
+		dailyPrecipIntensity = currently["precipIntensity"]
+		dailyApparentTemperature = currently["apparentTemperature"],
+		dailyWindSpeed = currently["windSpeed"]
 	console.log(time)
 	console.log(summary)
 	console.log(precipIntensity)
