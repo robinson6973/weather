@@ -5,9 +5,18 @@ form.onsubmit = function(event){
 	console.log(event);
 	var postCodeInput = document.getElementById("postCode");
 	locationRequest(postCodeInput.value);
+//	fuckUp(postCodeInput.value)
 	console.log(postCodeInput.value)
 }
 
+// function fuckUp(postCodeInput.value){
+// 	try {
+// 		locationRequest(postCode)
+// 	}
+// 	catch(e){
+// 		alert('stop cocking up'+e.message)
+// 	}
+// }
 //This function takes the postcode, combines it with the API and then gets a JSON file back
 function locationRequest(postCode){
 	//Makes the request to get the data from Geocoder
@@ -19,7 +28,7 @@ function locationRequest(postCode){
 	xhrLoc.onload = function(){
 		//get that bare JSON formatted
 		var locationData = JSON.parse(xhrLoc.response);
-		//getLatLng(locationData)
+		getLatLng(locationData)
 		console.log(locationData)
 	}
 	xhrLoc.send()
@@ -28,21 +37,21 @@ function locationRequest(postCode){
 //This function takes the JSON from the previous function. It then gets out a lattitude or longitude.
 //	lat
 //	lng
-// function getLatLng(results){
-// 	//Output the results
-// 	console.log(results);
-// 	//Scroll down the array in the JSON. I ignore everything except the two lat long variables
-// 	var location = results["results"][0]["geometry"]["location"],
-// 		//Finds the lattitude value
-// 		lat = location["lat"],
-// 		//Finds the longitude value
-// 		lng = location["lng"]
-// 	weatherRequest(lat, lng)
-// 	//Output the lat, long into the console for debugging 2
-// 	console.log(lat)
-// 	console.log(lng)
-// 	console.log("lat, lng. Above")
-// }
+function getLatLng(results){
+	//Output the results
+	console.log(results);
+	//Scroll down the array in the JSON. I ignore everything except the two lat long variables
+	var location = results["results"][0]["geometry"]["location"],
+		//Finds the lattitude value
+		lat = location["lat"],
+		//Finds the longitude value
+		lng = location["lng"]
+	//weatherRequest(lat, lng)
+	//Output the lat, long into the console for debugging 2
+	console.log(lat)
+	console.log(lng)
+	console.log("lat, lng. Above")
+}
 
 
 //This function fetches the data from the server via a PHP function
